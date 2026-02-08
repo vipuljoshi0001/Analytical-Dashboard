@@ -1,159 +1,201 @@
 📊 Sales Analytics Dashboard
-A full-stack sales tracking and analytics system with user authentication, data persistence, and interactive visualizations.
+
+A full-stack sales tracking and analytics system with secure user authentication, persistent storage, and interactive data visualizations.
 
 🎯 Project Overview
-Sales Analytics Dashboard helps businesses track and analyze their sales data with personalized insights including top-selling products, peak sales hours, monthly trends, and category performance.
-Key Features
 
-✅ User Login/Registration with secure authentication
-✅ Add, view, and delete sales transactions
-✅ Real-time analytics with 5 interactive charts
-✅ Persistent file-based data storage
-✅ Responsive modern UI
+Sales Analytics Dashboard helps businesses track and analyze their sales data with personalized insights such as:
 
+Top-selling products
+
+Peak sales hours
+
+Monthly revenue trends
+
+Category-wise performance
+
+This project is designed for academic submission, practical demonstration, and real-world learning.
+
+✨ Key Features
+
+✅ User Registration & Login (Secure Authentication)
+
+✅ Add, View, and Delete Sales Transactions
+
+✅ Real-time Analytics Dashboard
+
+✅ 5 Interactive Charts (Chart.js)
+
+✅ Persistent File-Based Storage
+
+✅ Responsive Modern UI
 
 🏗️ Project Structure
 project-root/
 │
-├── backend/                    # Java Backend (REST API)
-│   ├── User.java              # User model & authentication
-│   ├── Product.java           # Sales transaction model
-│   ├── Database.java          # File-based storage
-│   ├── SalesAnalytics.java    # Analytics calculations
-│   ├── AuthService.java       # Login/Register service
-│   ├── Resource.java          # API endpoints
-│   └── Main.java              # Server entry point
+├── backend/
+│   ├── User.java
+│   ├── Product.java
+│   ├── Database.java
+│   ├── SalesAnalytics.java
+│   ├── AuthService.java
+│   ├── Resource.java
+│   └── Main.java
 │
-├── frontend/                   # Frontend (HTML/CSS/JS)
-│   ├── login.html             # Login/Register page
-│   ├── dashboard.html         # Analytics dashboard
-│   ├── login.js               # Auth logic
-│   ├── dashboard.js           # Dashboard logic
-│   └── style.css              # Styling
+├── frontend/
+│   ├── login.html
+│   ├── dashboard.html
+│   ├── login.js
+│   ├── dashboard.js
+│   └── style.css
 │
-└── data/                       # Auto-generated storage
-    ├── users.txt              # User credentials
-    └── sales_[username].txt   # User sales data
+└── data/
+    ├── users.txt
+    └── sales_[username].txt
 
 🔄 System Workflow
-┌─────────────────────────────────────────────────────────────┐
-│                    USER REGISTRATION/LOGIN                   │
-└─────────────────────────────────────────────────────────────┘
-                              ↓
-                    User opens login.html
-                              ↓
-        ┌─────────────────────┴─────────────────────┐
-        ↓                                           ↓
-   REGISTER (New User)                         LOGIN (Existing)
-        ↓                                           ↓
-  Fill registration form                    Enter credentials
-        ↓                                           ↓
-  POST /api/register                         POST /api/login
-        ↓                                           ↓
-  AuthService validates                      Verify password hash
-        ↓                                           ↓
-  Save to users.txt                          Return user data
-        ↓                                           ↓
-        └─────────────────────┬─────────────────────┘
-                              ↓
-                  Store user in localStorage
-                              ↓
-                  Redirect to dashboard.html
+flowchart TD
+    A[User Opens login.html] --> B{Login or Register}
+    B -->|Register| C[POST /api/register]
+    B -->|Login| D[POST /api/login]
+    C --> E[Save User in users.txt]
+    D --> F[Verify Password Hash]
+    E --> G[Redirect to Dashboard]
+    F --> G[Redirect to Dashboard]
 
-┌─────────────────────────────────────────────────────────────┐
-│                    DASHBOARD OPERATIONS                      │
-└─────────────────────────────────────────────────────────────┘
-                              ↓
-              Dashboard loads user's sales data
-                              ↓
-              GET /api/sales?username=<user>
-                              ↓
-              Database reads sales_[user].txt
-                              ↓
-              GET /api/analytics?username=<user>
-                              ↓
-              SalesAnalytics computes metrics
-                              ↓
-         ┌────────────────────┴────────────────────┐
-         ↓                                         ↓
-    DISPLAY METRICS                          RENDER CHARTS
-         ↓                                         ↓
-  - Total Revenue                        - Top Products (Bar)
-  - Total Sales                          - Least Products (Bar)
-  - Top Product                          - Monthly Trend (Line)
-  - Best Month                           - Category Split (Pie)
-  - Peak Hour                            - Hourly Sales (Bar)
-  - Highest Sale                                   
-         ↓                                         ↓
-         └────────────────────┬────────────────────┘
-                              ↓
-                    Show Sales Table
+📊 Dashboard Operations
+flowchart LR
+    A[Dashboard Loads] --> B[GET /api/sales]
+    B --> C[Read sales_user.txt]
+    C --> D[GET /api/analytics]
+    D --> E[Compute Metrics]
+    E --> F[Render Charts]
+    F --> G[Display Sales Table]
 
-┌─────────────────────────────────────────────────────────────┐
-│                     ADD NEW SALE                            │
-└─────────────────────────────────────────────────────────────┘
-                              ↓
-              User fills sale form:
-              - Product Name
-              - Category
-              - Sale Amount
-              - Quantity
-              - Date & Time
-              - Customer Name
-                              ↓
-              POST /api/add-sale
-                              ↓
-              Create Product object
-                              ↓
-              Save to sales_[user].txt
-                              ↓
-              Refresh dashboard data
-                              ↓
-              Re-render charts & table
+➕ Add New Sale Flow
+flowchart TD
+    A[Fill Sale Form] --> B[POST /api/add-sale]
+    B --> C[Create Product Object]
+    C --> D[Save to sales_user.txt]
+    D --> E[Refresh Dashboard]
 
-┌─────────────────────────────────────────────────────────────┐
-│                     DELETE SALE                             │
-└─────────────────────────────────────────────────────────────┘
-                              ↓
-              User clicks Delete button
-                              ↓
-              POST /api/delete-sale
-                              ↓
-              Remove from sales_[user].txt
-                              ↓
-              Refresh dashboard
+🗑️ Delete Sale Flow
+flowchart TD
+    A[Click Delete Button] --> B[POST /api/delete-sale]
+    B --> C[Remove Sale from File]
+    C --> D[Refresh Dashboard]
 
-┌─────────────────────────────────────────────────────────────┐
-│                        LOGOUT                               │
-└─────────────────────────────────────────────────────────────┘
-                              ↓
-              Clear localStorage
-                              ↓
-              Redirect to login.html
+🔐 Logout Flow
+flowchart TD
+    A[Click Logout] --> B[Clear localStorage]
+    B --> C[Redirect to login.html]
+
+📈 Analytics & Metrics
+
+The dashboard displays:
+
+Total Revenue
+
+Total Sales Count
+
+Top-Selling Product
+
+Best Performing Month
+
+Peak Sales Hour
+
+Highest Single Sale
+
+Charts Included:
+
+📊 Top Products (Bar Chart)
+
+📉 Monthly Sales Trend (Line Chart)
+
+🥧 Category Distribution (Pie Chart)
+
+📊 Hourly Sales (Bar Chart)
+
+📊 Least Selling Products (Bar Chart)
 
 🛠️ Technology Stack
-LayerTechnologyBackendJava (JDK 11+), Built-in HTTP ServerFrontendHTML5, CSS3, Vanilla JavaScriptChartsChart.js 4.4.0StorageFile-based (text files)SecuritySHA-256 password hashingAPIREST (JSON responses)
-Algorithms Used
-
-Sorting: O(n log n) - Priority-based sorting
-Grouping: O(n) - HashMap aggregation
-Top-K: O(n log k) - Min-heap selection
-Analytics: O(n) - Single-pass computations
-
-
+Layer	Technology
+Backend	Java (JDK 11+), Built-in HTTP Server
+Frontend	HTML5, CSS3, Vanilla JavaScript
+Charts	Chart.js 4.4.0
+Storage	File-based (.txt files)
+Security	SHA-256 Password Hashing
+API	REST (JSON)
+⚙️ Algorithms Used
+Operation	Algorithm	Time Complexity
+Sorting Sales	Merge / Tim Sort	O(n log n)
+Grouping Data	HashMap Aggregation	O(n)
+Top-K Products	Min-Heap	O(n log k)
+Analytics Metrics	Single Pass	O(n)
 📋 Prerequisites
+Java
 
-Java JDK 11 or higher
+JDK 11 or higher
 
-Download: Oracle JDK or OpenJDK
-Verify: java -version and javac -version
+Verify installation:
 
+java -version
+javac -version
 
-Modern Web Browser
+Browser
 
-Chrome, Firefox, Edge, or Safari
+Chrome / Firefox / Edge / Safari
 
+IDE (Optional)
 
-Text Editor (Optional)
+VS Code
 
-VS Code, IntelliJ IDEA, or any IDE
+IntelliJ IDEA
+
+Eclipse
+
+▶️ How to Run the Project
+Backend
+cd backend
+javac *.java
+java Main
+
+Frontend
+
+Open frontend/login.html in browser
+
+🎓 Academic Relevance
+
+This project is ideal for:
+
+DAA / Data Analytics Mini Project
+
+Final Year / Semester Project
+
+Practical & Viva Demonstration
+
+🚀 Future Enhancements
+
+Database integration (MySQL / MongoDB)
+
+JWT-based authentication
+
+Cloud deployment
+
+Role-based access control
+
+Export analytics as PDF
+
+📌 Conclusion
+
+The Sales Analytics Dashboard provides a complete, secure, and scalable solution for analyzing sales data while demonstrating strong concepts in:
+
+Data Structures & Algorithms
+
+Backend API Design
+
+Frontend Visualization
+
+File Handling & Security
+
+✅ END OF README
