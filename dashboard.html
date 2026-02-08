@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Analytics Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <h1>📊 Sales Analytics Dashboard</h1>
+                    <p id="userWelcome">Loading...</p>
+                </div>
+                <button id="logoutBtn" class="btn btn-secondary">
+                    🚪 Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="container">
+        <!-- Add Sale Form -->
+        <section class="add-sale-section">
+            <div class="section-header">
+                <h2>➕ Add New Sale</h2>
+                <button id="toggleFormBtn" class="btn btn-outline">Show Form</button>
+            </div>
+            
+            <div id="addSaleForm" class="add-sale-form" style="display: none;">
+                <form id="saleFormElement">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productName">Product Name *</label>
+                            <input type="text" id="productName" name="productName" required 
+                                   placeholder="e.g., iPhone 15 Pro">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category *</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Food">Food & Beverages</option>
+                                <option value="Books">Books</option>
+                                <option value="Home">Home & Garden</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Beauty">Beauty & Health</option>
+                                <option value="Toys">Toys & Games</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="saleAmount">Sale Amount ($) *</label>
+                            <input type="number" id="saleAmount" name="saleAmount" 
+                                   step="0.01" min="0" required placeholder="999.99">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity *</label>
+                            <input type="number" id="quantity" name="quantity" 
+                                   min="1" required placeholder="1">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="saleDate">Sale Date & Time *</label>
+                            <input type="datetime-local" id="saleDate" name="saleDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerName">Customer Name</label>
+                            <input type="text" id="customerName" name="customerName" 
+                                   placeholder="John Doe (optional)">
+                        </div>
+                    </div>
+
+                    <div id="formMessage" class="form-message"></div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            💾 Save Sale
+                        </button>
+                        <button type="reset" class="btn btn-outline">
+                            🔄 Clear Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Key Metrics Cards -->
+        <section class="metrics-cards">
+            <div class="card metric-card">
+                <div class="metric-icon">💰</div>
+                <h3>Total Revenue</h3>
+                <p class="metric-value" id="totalRevenue">$0.00</p>
+            </div>
+            <div class="card metric-card">
+                <div class="metric-icon">📦</div>
+                <h3>Total Sales</h3>
+                <p class="metric-value" id="totalSales">0</p>
+            </div>
+            <div class="card metric-card">
+                <div class="metric-icon">🏆</div>
+                <h3>Top Product</h3>
+                <p class="metric-value" id="topProduct">-</p>
+            </div>
+            <div class="card metric-card">
+                <div class="metric-icon">📅</div>
+                <h3>Best Month</h3>
+                <p class="metric-value" id="bestMonth">-</p>
+            </div>
+            <div class="card metric-card">
+                <div class="metric-icon">⏰</div>
+                <h3>Peak Hour</h3>
+                <p class="metric-value" id="peakHour">-</p>
+            </div>
+            <div class="card metric-card">
+                <div class="metric-icon">💵</div>
+                <h3>Highest Sale</h3>
+                <p class="metric-value" id="maxSale">$0.00</p>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <!-- Top Selling Products Chart -->
+            <div class="chart-card">
+                <h2>🏆 Top 5 Selling Products</h2>
+                <canvas id="topProductsChart"></canvas>
+            </div>
+
+            <!-- Least Selling Products Chart -->
+            <div class="chart-card">
+                <h2>📉 Bottom 5 Products (Need Attention)</h2>
+                <canvas id="leastProductsChart"></canvas>
+            </div>
+
+            <!-- Monthly Sales Chart -->
+            <div class="chart-card full-width">
+                <h2>📅 Monthly Sales Trend</h2>
+                <canvas id="monthlySalesChart"></canvas>
+            </div>
+
+            <!-- Category Sales Chart -->
+            <div class="chart-card">
+                <h2>📊 Sales by Category</h2>
+                <canvas id="categorySalesChart"></canvas>
+            </div>
+
+            <!-- Hourly Sales Chart -->
+            <div class="chart-card">
+                <h2>⏰ Sales by Hour of Day</h2>
+                <canvas id="hourlySalesChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Sales Table -->
+        <section class="sales-table-section">
+            <div class="section-header">
+                <h2>📋 Recent Sales</h2>
+                <button id="refreshBtn" class="btn btn-outline">🔄 Refresh</button>
+            </div>
+            <div class="table-wrapper">
+                <table id="salesTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Quantity</th>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="salesTableBody">
+                        <tr>
+                            <td colspan="8" class="no-data">Loading sales data...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Sales Analytics Dashboard | Your personal sales tracking system</p>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
