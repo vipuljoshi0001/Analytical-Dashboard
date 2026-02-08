@@ -31,6 +31,9 @@ This project is designed for academic submission, practical demonstration, and r
 ✅ Responsive Modern UI
 
 🏗️ Project Structure
+## 🏗️ Project Structure
+
+```text
 project-root/
 │
 ├── backend/
