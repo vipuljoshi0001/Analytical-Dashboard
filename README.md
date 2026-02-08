@@ -31,29 +31,28 @@ This project is designed for academic submission, practical demonstration, and r
 ✅ Responsive Modern UI
 
 🏗️ Project Structure
-```mermaid
 project-root/
 │
 ├── backend/
-│   ├── User.java
-│   ├── Product.java
-│   ├── Database.java
-│   ├── SalesAnalytics.java
-│   ├── AuthService.java
-│   ├── Resource.java
-│   └── Main.java
+│   ├── User.java              # User model & authentication
+│   ├── Product.java           # Sales transaction model
+│   ├── Database.java          # File-based storage
+│   ├── SalesAnalytics.java    # Analytics calculations
+│   ├── AuthService.java       # Login/Register service
+│   ├── Resource.java          # REST API endpoints
+│   └── Main.java              # Server entry point
 │
 ├── frontend/
-│   ├── login.html
-│   ├── dashboard.html
-│   ├── login.js
-│   ├── dashboard.js
-│   └── style.css
+│   ├── login.html             # Login & registration UI
+│   ├── dashboard.html         # Analytics dashboard
+│   ├── login.js               # Authentication logic
+│   ├── dashboard.js           # Dashboard & charts logic
+│   └── style.css              # Styling
 │
 └── data/
-    ├── users.txt
-    └── sales_[username].txt
-```
+    ├── users.txt              # Stored user credentials
+    └── sales_[username].txt   # User-specific sales data
+
 
 🔄 System Workflow
 ```mermaid
