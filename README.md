@@ -31,6 +31,7 @@ This project is designed for academic submission, practical demonstration, and r
 ✅ Responsive Modern UI
 
 🏗️ Project Structure
+```mermaid
 project-root/
 │
 ├── backend/
@@ -52,8 +53,10 @@ project-root/
 └── data/
     ├── users.txt
     └── sales_[username].txt
+```
 
 🔄 System Workflow
+```mermaid
 flowchart TD
     A[User Opens login.html] --> B{Login or Register}
     B -->|Register| C[POST /api/register]
@@ -62,8 +65,11 @@ flowchart TD
     D --> F[Verify Password Hash]
     E --> G[Redirect to Dashboard]
     F --> G[Redirect to Dashboard]
+```
+
 
 📊 Dashboard Operations
+```mermaid
 flowchart LR
     A[Dashboard Loads] --> B[GET /api/sales]
     B --> C[Read sales_user.txt]
@@ -71,24 +77,33 @@ flowchart LR
     D --> E[Compute Metrics]
     E --> F[Render Charts]
     F --> G[Display Sales Table]
+```
+
 
 ➕ Add New Sale Flow
+```mermaid
 flowchart TD
     A[Fill Sale Form] --> B[POST /api/add-sale]
     B --> C[Create Product Object]
     C --> D[Save to sales_user.txt]
     D --> E[Refresh Dashboard]
+```
 
 🗑️ Delete Sale Flow
+```mermaid
 flowchart TD
     A[Click Delete Button] --> B[POST /api/delete-sale]
     B --> C[Remove Sale from File]
     C --> D[Refresh Dashboard]
+```
+
 
 🔐 Logout Flow
+```mermaid
 flowchart TD
     A[Click Logout] --> B[Clear localStorage]
     B --> C[Redirect to login.html]
+```
 
 📈 Analytics & Metrics
 
@@ -119,6 +134,7 @@ Charts Included:
 📊 Least Selling Products (Bar Chart)
 
 🛠️ Technology Stack
+
 Layer	Technology
 Backend	Java (JDK 11+), Built-in HTTP Server
 Frontend	HTML5, CSS3, Vanilla JavaScript
@@ -126,12 +142,15 @@ Charts	Chart.js 4.4.0
 Storage	File-based (.txt files)
 Security	SHA-256 Password Hashing
 API	REST (JSON)
+
 ⚙️ Algorithms Used
+
 Operation	Algorithm	Time Complexity
 Sorting Sales	Merge / Tim Sort	O(n log n)
 Grouping Data	HashMap Aggregation	O(n)
 Top-K Products	Min-Heap	O(n log k)
 Analytics Metrics	Single Pass	O(n)
+
 📋 Prerequisites
 Java
 
