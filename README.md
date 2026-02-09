@@ -1,3 +1,4 @@
+
 📊 Sales Analytics Dashboard
 
 A full-stack sales tracking and analytics system with secure user authentication, persistent storage, and interactive data visualizations.
@@ -31,7 +32,7 @@ This project is designed for academic submission, practical demonstration, and r
 ✅ Responsive Modern UI
 
 🏗️ Project Structure
-## 🏗️ Project Structure
+ Project Structure
 
 ```text
 project-root/
