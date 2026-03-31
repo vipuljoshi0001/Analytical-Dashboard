@@ -1,0 +1,42 @@
+{
+  "app": { "name": "SellNiti", "tagline": "Smart Business Manager" },
+  "nav": {
+    "dashboard": "Dashboard", "inventory": "Inventory",
+    "billing": "Billing", "history": "Bill History",
+    "ai": "AI Assistant", "profile": "Profile", "logout": "Logout"
+  },
+  "dashboard": {
+    "title": "Dashboard", "todaySales": "Today's Sales",
+    "monthlyGMV": "Monthly GMV", "totalOrders": "Total Orders",
+    "totalProfit": "Total Profit", "lowStock": "Low Stock Items",
+    "topSellers": "Top Sellers", "recentBills": "Recent Bills"
+  },
+  "inventory": {
+    "title": "Inventory", "addProduct": "Add Product",
+    "productName": "Product Name", "category": "Category",
+    "costPrice": "Cost Price", "sellingPrice": "Selling Price",
+    "quantity": "Quantity", "gst": "GST %",
+    "lowStockAlert": "Low Stock Alert", "outOfStock": "Out of Stock",
+    "inStock": "In Stock", "editProduct": "Edit Product",
+    "deleteProduct": "Delete Product", "searchProducts": "Search products..."
+  },
+  "billing": {
+    "title": "Billing", "selectItems": "Select Items",
+    "cart": "Cart", "customerName": "Customer Name",
+    "customerPhone": "Customer Phone", "paymentMode": "Payment Mode",
+    "cash": "Cash", "upi": "UPI", "card": "Card",
+    "subtotal": "Subtotal", "gstAmount": "GST Amount",
+    "total": "Total", "generateBill": "Generate Bill",
+    "proceedToPay": "Proceed to Pay", "downloadPDF": "Download PDF",
+    "billNumber": "Bill No"
+  },
+  "ai": {
+    "title": "AI Assistant", "placeholder": "Ask me anything about your business...",
+    "suggestions": ["Why are my sales low?", "Which product should I promote?", "What should I restock?", "How can I increase profit?"]
+  },
+  "common": {
+    "save": "Save", "cancel": "Cancel", "delete": "Delete",
+    "edit": "Edit", "search": "Search", "loading": "Loading...",
+    "noData": "No data found", "rupee": "₹"
+  }
+}

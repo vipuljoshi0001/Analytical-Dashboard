@@ -1,0 +1,42 @@
+{
+  "app": { "name": "SellNiti", "tagline": "स्मार्ट बिजनेस मैनेजर" },
+  "nav": {
+    "dashboard": "डैशबोर्ड", "inventory": "इन्वेंटरी",
+    "billing": "बिलिंग", "history": "बिल हिस्ट्री",
+    "ai": "AI सहायक", "profile": "प्रोफाइल", "logout": "लॉगआउट"
+  },
+  "dashboard": {
+    "title": "डैशबोर्ड", "todaySales": "आज की बिक्री",
+    "monthlyGMV": "मासिक GMV", "totalOrders": "कुल ऑर्डर",
+    "totalProfit": "कुल मुनाफा", "lowStock": "कम स्टॉक आइटम",
+    "topSellers": "सबसे ज्यादा बिके", "recentBills": "हाल के बिल"
+  },
+  "inventory": {
+    "title": "इन्वेंटरी", "addProduct": "प्रोडक्ट जोड़ें",
+    "productName": "प्रोडक्ट नाम", "category": "श्रेणी",
+    "costPrice": "लागत मूल्य", "sellingPrice": "बिक्री मूल्य",
+    "quantity": "मात्रा", "gst": "GST %",
+    "lowStockAlert": "कम स्टॉक अलर्ट", "outOfStock": "स्टॉक खत्म",
+    "inStock": "उपलब्ध", "editProduct": "प्रोडक्ट संपादित करें",
+    "deleteProduct": "प्रोडक्ट हटाएं", "searchProducts": "प्रोडक्ट खोजें..."
+  },
+  "billing": {
+    "title": "बिलिंग", "selectItems": "आइटम चुनें",
+    "cart": "कार्ट", "customerName": "ग्राहक का नाम",
+    "customerPhone": "ग्राहक का फोन", "paymentMode": "भुगतान का तरीका",
+    "cash": "नकद", "upi": "UPI", "card": "कार्ड",
+    "subtotal": "उपकुल", "gstAmount": "GST राशि",
+    "total": "कुल", "generateBill": "बिल बनाएं",
+    "proceedToPay": "भुगतान करें", "downloadPDF": "PDF डाउनलोड करें",
+    "billNumber": "बिल नं."
+  },
+  "ai": {
+    "title": "AI सहायक", "placeholder": "अपने बिजनेस के बारे में कुछ भी पूछें...",
+    "suggestions": ["मेरी बिक्री कम क्यों है?", "कौन सा प्रोडक्ट प्रमोट करूं?", "क्या रीस्टॉक करूं?", "मुनाफा कैसे बढ़ाएं?"]
+  },
+  "common": {
+    "save": "सेव करें", "cancel": "रद्द करें", "delete": "हटाएं",
+    "edit": "संपादित करें", "search": "खोजें", "loading": "लोड हो रहा है...",
+    "noData": "कोई डेटा नहीं", "rupee": "₹"
+  }
+}
