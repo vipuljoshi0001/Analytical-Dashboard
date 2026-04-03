@@ -127,7 +127,7 @@ export default function DashboardPage() {
           <Card>
             <div className="flex items-center justify-between mb-6">
               <h2 className={`text-base font-semibold ${textPrimary}`}>Monthly Sales & Profit</h2>
-              <Badge variant="info">2025</Badge>
+              <Badge variant="info">2026</Badge>
             </div>
             <ResponsiveContainer width="100%" height={240}>
               <BarChart data={data?.monthlyData || []}>
