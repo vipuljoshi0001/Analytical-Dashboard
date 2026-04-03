@@ -1,17 +1,12 @@
-import express from 'express'
-import cors from 'cors'
 import dotenv from 'dotenv'
-import aiRoutes from './src/routes/aiRoutes.js'
-
 dotenv.config()
 
-const app = express()
+import app from './src/app.js'
+
 const PORT = process.env.PORT || 5000
 
-app.use(cors({ origin: process.env.FRONTEND_URL || '*' }))
-app.use(express.json())
-
-app.get('/', (req, res) => res.json({ status: 'SellNiti Backend Running' }))
-app.use('/api/ai', aiRoutes)
-
-app.listen(PORT, () => console.log(`SellNiti backend running on port ${PORT}`))
+app.listen(PORT, () => {
+  console.log(`✅ SellNiti backend running on port ${PORT}`)
+  console.log(`🤖 AI Provider: Groq (llama-3.1-8b-instant)`)
+  console.log(`🔑 Groq Key: ${process.env.GROQ_API_KEY ? 'FOUND ✅' : 'MISSING ❌'}`)
+})

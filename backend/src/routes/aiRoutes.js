@@ -1,10 +1,18 @@
 import { Router } from 'express'
 import { chatWithAI } from '../controllers/aiController.js'
-import rateLimit from 'express-rate-limit'
+import { aiLimiter } from '../middleware/rateLimiter.js'
 
 const router = Router()
-const limiter = rateLimit({ windowMs: 60 * 1000, max: 20, message: { error: 'Too many requests' } })
 
-router.post('/chat', limiter, chatWithAI)
+router.post('/chat', aiLimiter, chatWithAI)
+
+router.get('/status', (req, res) => {
+  res.json({
+    status: 'ok',
+    provider: 'groq',
+    model: 'llama-3.1-8b-instant',
+    free: true
+  })
+})
 
 export default router

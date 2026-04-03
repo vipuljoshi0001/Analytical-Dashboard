@@ -1,39 +1,36 @@
-import OpenAI from 'openai'
+import Groq from 'groq-sdk'
 
-let openai = null
+let groqClient = null
 
-const getClient = () => {
-  if (!openai) {
-    if (!process.env.OPENAI_API_KEY) throw new Error('OPENAI_API_KEY not configured')
-    openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+export const getGroqClient = () => {
+  if (!groqClient) {
+    if (!process.env.GROQ_API_KEY) {
+      throw new Error('GROQ_API_KEY not set in .env')
+    }
+    groqClient = new Groq({ apiKey: process.env.GROQ_API_KEY })
   }
-  return openai
-}
-
-export const getChatCompletion = async (message, systemPrompt) => {
-  const client = getClient()
-  const completion = await client.chat.completions.create({
-    model: 'gpt-4o-mini',
-    messages: [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: message }
-    ],
-    max_tokens: 500,
-    temperature: 0.7
-  })
-  return completion.choices[0].message.content
+  return groqClient
 }
 
 export const buildSystemPrompt = (shopContext) => `
 You are SellNiti AI, a smart business assistant for Indian small shop owners.
-You have access to real-time shop data:
-${shopContext}
+Shop Data: ${shopContext || 'No data yet.'}
+Be practical, concise, and use Indian business context.
+Reply in Hindi if user writes in Hindi.
+`.trim()
 
-Instructions:
-- Give practical, actionable advice in simple language
-- Use Indian context (₹, GST, Diwali, seasons, local market trends)
-- Keep responses concise (2-4 short paragraphs or bullet points)
-- Be encouraging and business-focused
-- If asked in Hindi, respond in Hindi
-- Focus on actionable recommendations, not just analysis
-`
+export const buildShopContext = (shopData, dashData) => {
+  if (!dashData) return 'No sales data available yet.'
+
+  return `
+Shop: ${shopData?.shopName || 'Unknown'}
+GST: ${shopData?.gstNumber || 'Not set'}
+Today Sales: ₹${(dashData.todaySales || 0).toLocaleString('en-IN')}
+Monthly Sales: ₹${(dashData.monthlySales || 0).toLocaleString('en-IN')}
+Monthly Profit: ₹${(dashData.totalProfit || 0).toLocaleString('en-IN')}
+Monthly Orders: ${dashData.monthlyOrders || 0}
+Top Sellers: ${dashData.topSellers?.map(s => s?.name).filter(Boolean).join(', ') || 'None yet'}
+Low Stock: ${dashData.lowStock?.map(s => `${s?.name} (${s?.quantity} left)`).filter(Boolean).join(', ') || 'All good'}
+Yearly Sales: ₹${(dashData.yearlySales || 0).toLocaleString('en-IN')}
+  `.trim()
+}
