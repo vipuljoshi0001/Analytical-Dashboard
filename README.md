@@ -19,19 +19,6 @@
 </div>
 
 ---
-
-## 📸 Screenshots
-
-| Dashboard (Light) | Dashboard (Dark) |
-|---|---|
-| ![Dashboard Light](https://via.placeholder.com/500x300/f8fafc/6366f1?text=Dashboard+Light) | ![Dashboard Dark](https://via.placeholder.com/500x300/0f0f1a/6366f1?text=Dashboard+Dark) |
-
-| Billing / POS | AI Assistant |
-|---|---|
-| ![Billing](https://via.placeholder.com/500x300/f8fafc/6366f1?text=Billing+POS) | ![AI](https://via.placeholder.com/500x300/0f0f1a/6366f1?text=AI+Assistant) |
-
----
-
 ## ✨ Features
 
 ### 📊 Sales Analytics Dashboard
