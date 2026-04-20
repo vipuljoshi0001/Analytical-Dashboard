@@ -1,9 +1,9 @@
 export const ExpenseSchema = {
   expenseId: 'string',
   shopId: 'string',
-  type: 'string',      // rent, electricity, salary, other
+  type: 'string',     
   amount: 'number',
-  month: 'string',     // YYYY-MM
+  month: 'string',     
   note: 'string',
   createdAt: 'ISO string'
 }
