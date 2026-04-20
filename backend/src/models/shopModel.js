@@ -1,11 +1,10 @@
-// Firestore Document Schema Reference (not enforced — just documentation)
 export const ShopSchema = {
-  shopId: 'string',        // Firebase UID
+  shopId: 'string',       
   shopName: 'string',
-  gstNumber: 'string',     // 15-digit GSTIN
+  gstNumber: 'string',   
   phone: 'string',
   email: 'string',
-  billCounter: 'number',   // Auto-increment bill number
+  billCounter: 'number',   
   createdAt: 'ISO string'
 }
 
