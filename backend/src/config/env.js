@@ -10,7 +10,7 @@ export const config = {
 
 export const validateEnv = () => {
   if (!config.openaiKey) {
-    console.warn('⚠️  OPENAI_API_KEY not set — AI features will be limited')
+    console.warn('  OPENAI_API_KEY not set — AI features will be limited')
   }
-  console.log(`✅ Environment: ${config.nodeEnv}`)
+  console.log(` Environment: ${config.nodeEnv}`)
 }
