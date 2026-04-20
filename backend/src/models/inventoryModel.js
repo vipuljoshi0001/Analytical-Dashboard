@@ -6,7 +6,7 @@ export const InventorySchema = {
   costPrice: 'number',
   sellingPrice: 'number',
   quantity: 'number',
-  gstPercent: 'number',   // 0, 5, 12, 18, 28
+  gstPercent: 'number',  
   lowStockAt: 'number',
   createdAt: 'ISO string'
 }
