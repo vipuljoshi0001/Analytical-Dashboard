@@ -3,8 +3,7 @@ export const authMiddleware = (req, res, next) => {
   if (!token) {
     return res.status(401).json({ error: 'No token provided' })
   }
-  // For full token verification, use Firebase Admin SDK
-  // For now, we trust frontend Firebase auth
+
   req.userId = token
   next()
 }
